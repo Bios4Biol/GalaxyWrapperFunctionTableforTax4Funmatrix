@@ -100,6 +100,7 @@ Tax4Fun specific metadata «method_meta» : The Tax4Fun specific metadata (forma
 # Galaxy wrapper's authors
 
 Helene Billard - UMR-1280 PhAN Inra-Universite de Nantes
+
 Sarah Maman - Sigenae GenPhySE - Inra Occitanie
 
 # Version Galaxy Tool : V1.0
