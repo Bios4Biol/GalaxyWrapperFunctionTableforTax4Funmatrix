@@ -1,4 +1,4 @@
-# GalaxyWrapperFunctionTableforTax4Funmatrix
+# Galaxy Wrapper Function Table for Tax4Fun matrix
 
 Le BIOM sortant de l’étape 4 de la pipeline FROGS (Outil « FROGS Affiliation OTU ») contient la table d’abondance des OTUs et leurs taxonomies. A partir de ces informations, une prédiction métabolique et fonctionnelle peut être réalisée avec l’outil «Function Table for Tax4Fun matrix (Galaxy Version 1.0.0)».
 
@@ -60,3 +60,66 @@ t4f(otu_table=ABUND,rows_are_taxa=FALSE,tax_table=TAX,reference_path=tmp,type='u
 
 Les en-têtes des colonnes des tables en sortie de l'outil sont décalés d'une colonne vers la gauche.
 
+# Description
+
+Use of Tax4Fun with themetagenomics R package, otu_table and tax_table of phyloseq object to generate function table.
+
+The David et al. time series dataset is used as example (source: https://cran.r-project.org/web/packages/themetagenomics/vignettes/functional_prediction.html).
+
+# Input files
+
+Data file (format rdata): One phyloseq object containing the OTU abundance table and their taxonomies. This file can be the result of FROGS Phyloseq Import Data tool.
+
+The David dataset has an OTU abundance table with 1493 taxa and 746 samples, and a taxonomy table with 1493 taxa by 7 taxonomic ranks.
+
+The OTU abundance table (taxa are rows):
+
+![alt text](https://github.com/Bios4Biol/GalaxyWrapperFunctionTableforTax4Funmatrix/blob/master/a-OTU_abundance_table.png)
+
+The taxonomy table (taxa are rows):
+
+![alt text](https://github.com/Bios4Biol/GalaxyWrapperFunctionTableforTax4Funmatrix/blob/master/b-taxonomy_table.png)
+
+# Output files
+
+Output file is the function table that contains the KO term counts across samples, the KEGG metadata that describes the KO terms, and t4f specific metadata that has the FTU scores.
+
+The function table «fxn_table» : The function table (format txt) contains the KO term counts across samples.
+
+![alt text](https://github.com/Bios4Biol/GalaxyWrapperFunctionTableforTax4Funmatrix/blob/master/d-fnx_table.png)
+
+The KEGG metadata « fxn_meta» : The KEGG metadata (format txt) describes the KO terms.
+
+![alt text](https://github.com/Bios4Biol/GalaxyWrapperFunctionTableforTax4Funmatrix/blob/master/e-kegg.png)
+
+Tax4Fun specific metadata «method_meta» : The Tax4Fun specific metadata (format txt) has the FTU quality control score for each sample. The FTU score is the fraction of OTUs that could not be mapped to KEGG organisms (KO terms).
+
+![alt text](https://github.com/Bios4Biol/GalaxyWrapperFunctionTableforTax4Funmatrix/blob/master/f-ftu.png)
+
+
+# Galaxy wrapper's authors
+
+Helene Billard - UMR-1280 PhAN Inra-Universite de Nantes
+Sarah Maman - Sigenae GenPhySE - Inra Occitanie
+
+# Version Galaxy Tool : V1.0
+
+# Contacts
+support.sigenae@inra.fr
+
+# Please cite
+
+Depending on the help provided you can cite us in acknowledgements, references or both.
+Examples
+
+Acknowledgements :
+<pre>
+We wish to thank SIGENAE group and UMR-1280 PhAN Inra-Universite de Nantes.
+</pre>
+
+References :
+<pre>
+SIGENAE [http://www.sigenae.org/]
+Package R "themetagenomics" (authors : Stephen Woloszynek): https://cran.r-project.org/web/packages/themetagenomics/
+Manual ("t4f" : description, usage, arguments, sorties, references): https://cran.r-project.org/web/packages/themetagenomics/themetagenomics.pdf    
+</pre>
