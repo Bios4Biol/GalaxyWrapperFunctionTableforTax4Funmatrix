@@ -18,33 +18,38 @@ biom.
 Afin de réaliser ces étapes rapidement à la suite du pipeline FROGS, le workflow «Function Table for Tax4Fun matrix » est disponible au format .ga 
 Vous pourrez l’importer dans votre espace Galaxy, vérifier les paramètres des outils détaillés ci-dessous, et l’exécuter sur vos données. 
 
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/Bios4Biol/GalaxyWrapperFunctionTableforTax4Funmatrix/blob/master/1-wf_function_table.png)
 
 Figure 1: Workflow "Function Table for Tax4Fun matrix".
 
 1ère étape: convertir le fichier de format biom en format tabular.
 
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/Bios4Biol/GalaxyWrapperFunctionTableforTax4Funmatrix/blob/master/2-biom-to-tsv.png)
+
 Figure 2: Formulaire de l’outil “FROGS BIOM to TSV (Galaxy Version 2.1.0)”.
 
 2ème étape:remplacer les termes « multi-affiliation » par des chaînes vides.
 
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/Bios4Biol/GalaxyWrapperFunctionTableforTax4Funmatrix/blob/master/3-find-replace.png)
+
 Figure 3: Formulaire de l’outil “Find and replace (Galaxy Version 1.0.0)”.
 
 3ème étape: convertir le fichier de format tabular en format biom.
 
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/Bios4Biol/GalaxyWrapperFunctionTableforTax4Funmatrix/blob/master/4-tsv_biom.png)
+
 Figure 4: Formulaire de l’outil “FROGS TSV_to_BIOM (Galaxy Version 2.0.0)”.
 
 4ème étape: construire un objet phyloseq de format rdata à partir du fichier de format biom.
 
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/Bios4Biol/GalaxyWrapperFunctionTableforTax4Funmatrix/blob/master/5-phyloseq.png)
+
 Figure 5: Formulaire de l’outil “FROGSSTAT Phyloseq Import Data (Galaxy Version 1.0.1)”.
 
 A l’issue de ces 4 étapes, l’outil «Function Table for Tax4Fun matrix (Galaxy Version 1.0.0)» peut être utilisé:
 
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/Bios4Biol/GalaxyWrapperFunctionTableforTax4Funmatrix/blob/master/6-function_table.png)
+
 Figure 6 : Formulaire de l’outil “Function Table (Galaxy Version 1.0.0) ”.
 
 Une description des fichiers en entrée et en sortie, ainsi que les références avec des liens vers le package R «themetagenomics
