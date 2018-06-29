@@ -1,0 +1,275 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "Function Table for Tax4Fun matrix", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Abundance file"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 188, 
+                "top": 272
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Abundance file\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "9cf27a35-93c1-4040-ab49-2a3290151b18", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Sample file"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 867, 
+                "top": 447
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Sample file\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "7a023b93-0768-4247-82a8-29a8d7e3857c", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 2, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Tree file"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 868, 
+                "top": 535
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Tree file\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "510b6fb7-46f3-44aa-8b04-a0179da33c8d", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "FROGS_biom_to_tsv", 
+            "id": 3, 
+            "input_connections": {
+                "biom_file": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "FROGS BIOM to TSV", 
+            "outputs": [
+                {
+                    "name": "tsv_file", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "multi_affi_file", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 384.5, 
+                "top": 275
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "FROGS_biom_to_tsv", 
+            "tool_state": "{\"extract_multi_align\": \"\\\"False\\\"\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"biom_file\": \"null\", \"sequence_file\": \"null\"}", 
+            "tool_version": "2.1.0", 
+            "type": "tool", 
+            "uuid": "64b610df-2ede-492a-ba57-d4f4a70660c0", 
+            "workflow_outputs": []
+        }, 
+        "4": {
+            "annotation": "", 
+            "content_id": "sm_sed_11022014", 
+            "id": 4, 
+            "input_connections": {
+                "file": {
+                    "id": 3, 
+                    "output_name": "tsv_file"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Find and replace", 
+            "outputs": [
+                {
+                    "name": "outputfile", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 611.5, 
+                "top": 273.5
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "sm_sed_11022014", 
+            "tool_state": "{\"__page__\": 0, \"substitut\": \"\\\"\\\"\", \"motif\": \"\\\"Multi-affiliation\\\"\", \"__rerun_remap_job_id__\": null, \"file\": \"null\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "5985b423-19ac-4ed1-9bba-ccca39acf566", 
+            "workflow_outputs": []
+        }, 
+        "5": {
+            "annotation": "", 
+            "content_id": "FROGS_tsv_to_biom", 
+            "id": 5, 
+            "input_connections": {
+                "tsv_file": {
+                    "id": 4, 
+                    "output_name": "outputfile"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "FROGS TSV_to_BIOM", 
+            "outputs": [
+                {
+                    "name": "biom_file", 
+                    "type": "biom1"
+                }, 
+                {
+                    "name": "sequence_file", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 835.5, 
+                "top": 277
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "FROGS_tsv_to_biom", 
+            "tool_state": "{\"extract_fasta\": \"\\\"False\\\"\", \"multi_affi_file\": \"null\", \"tsv_file\": \"null\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_version": "2.0.0", 
+            "type": "tool", 
+            "uuid": "7f82f0f7-7030-49da-a417-c1bcb3e408f2", 
+            "workflow_outputs": []
+        }, 
+        "6": {
+            "annotation": "", 
+            "content_id": "FROGSSTAT_Phyloseq_Import_Data", 
+            "id": 6, 
+            "input_connections": {
+                "biomfile": {
+                    "id": 5, 
+                    "output_name": "biom_file"
+                }, 
+                "samplefile": {
+                    "id": 1, 
+                    "output_name": "output"
+                }, 
+                "treefile": {
+                    "id": 2, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "FROGSSTAT Phyloseq Import Data", 
+            "outputs": [
+                {
+                    "name": "data", 
+                    "type": "rdata"
+                }, 
+                {
+                    "name": "html", 
+                    "type": "html"
+                }
+            ], 
+            "position": {
+                "left": 1148, 
+                "top": 282.5
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "FROGSSTAT_Phyloseq_Import_Data", 
+            "tool_state": "{\"__page__\": 0, \"biomfile\": \"null\", \"samplefile\": \"null\", \"ranks\": \"\\\"Kingdom Phylum Class Order Family Genus Species\\\"\", \"__rerun_remap_job_id__\": null, \"treefile\": \"null\", \"normalization\": \"\\\"False\\\"\"}", 
+            "tool_version": "1.0.1", 
+            "type": "tool", 
+            "uuid": "8bf39361-3272-4b55-aa03-4fb5e7deb6a2", 
+            "workflow_outputs": []
+        }, 
+        "7": {
+            "annotation": "", 
+            "content_id": "smFunctionTable", 
+            "id": 7, 
+            "input_connections": {
+                "input_matrix": {
+                    "id": 6, 
+                    "output_name": "data"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Function Table", 
+            "outputs": [
+                {
+                    "name": "outputfile_fxn_table", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "outputfile_fxn_meta", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "outputfile_method_meta", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 1451.5, 
+                "top": 285.5
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "smFunctionTable", 
+            "tool_state": "{\"output\": \"\\\"\\\"\", \"__rerun_remap_job_id__\": null, \"input_matrix\": \"null\", \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "1d9a3a3b-09af-4c1d-a9b3-53aa80aaa119", 
+            "workflow_outputs": []
+        }
+    }, 
+    "uuid": "1cf5c415-013a-466a-8577-f95d2573f29c"
+}
