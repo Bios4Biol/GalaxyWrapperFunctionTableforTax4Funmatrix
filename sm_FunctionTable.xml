@@ -1,0 +1,140 @@
+<!--# Copyright (C) 2017 INRA
+     # This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see http://www.gnu.org/licenses/.
+#-->
+<tool id="smFunctionTable" name="Function Table" version="1.0.0">
+    <description>for Tax4Fun matrix</description>
+    <requirements>
+        <requirement type="package">R</requirement>
+        <requirement type="package">r-optparse</requirement>
+        <requirement type="package">r-phyloseq</requirement>
+        <requirement type="package">r-themetagenomics</requirement>
+    </requirements>
+    <stdio>
+        <!-- Anything other than zero is an error -->
+        <exit_code range="1:" level="fatal"/>
+        <exit_code range=":-1" level="fatal"/>
+    </stdio>
+    <command><![CDATA[
+        module load compiler/gcc-4.8.2; /usr/local/bioinfo/src/R/R-3.4.1/bin/Rscript  $__tool_directory__/sm_FunctionTable.R
+        --input_matrix $input_matrix
+	#if $output
+          --output $output
+        #end if
+	--outputfile_fxn_table $outputfile_fxn_table
+	--outputfile_fxn_meta $outputfile_fxn_meta
+	--outputfile_method_meta $outputfile_method_meta
+         &&
+         cp *fxn_table*.txt $outputfile_fxn_table
+	 &&
+         cp *fxn_meta*.txt $outputfile_fxn_meta
+	 &&
+         cp *method_meta*.txt $outputfile_method_meta
+    ]]></command>
+    <inputs>
+        <param argument="--input_matrix" type="data" format="rdata,csv,tsv,txt" label="Input Matrix"/>
+	<param argument="--output" type="text" label="Output name" help="[Optional] Specify the project label for your outputs. By default it will be the name of your input file."/>
+    </inputs>
+    <outputs>
+	<data format="txt" name="outputfile_fxn_table" label ="#if str($output)=='' then os.path.splitext(str($input_matrix.name))[0]  else $output #_fxn_table.txt"/>
+	<data format="txt" name="outputfile_fxn_meta" label="fxn_meta"/>
+	<data format="txt" name="outputfile_method_meta" label="method_meta"/>
+    </outputs>
+    <help><![CDATA[
+
+-----------
+Description
+-----------
+
+Use of Tax4Fun with themetagenomics R package, otu_table and tax_table of phyloseq object to generate function table.
+
+The David et al. time series dataset is used as example (source: https://cran.r-project.org/web/packages/themetagenomics/vignettes/functional_prediction.html).
+
+
+-----------
+Input files
+-----------
+Data file (format rdata): One phyloseq object containing the OTU abundance table and their taxonomies. This file can be the result of FROGS Phyloseq Import Data tool.
+
+The David dataset has an OTU abundance table with 1493 taxa and 746 samples, and a taxonomy table with 1493 taxa by 7 taxonomic ranks.
+
+The OTU abundance table (taxa are rows):
+
+
+.. image:: ${static_path}/images/Tax4Fun/the_otu_abundance_table_1.jpg
+
+The taxonomy table (taxa are rows):
+
+.. image:: ${static_path}/images/Tax4Fun/the_taxonomy_table_2.jpg
+
+
+------------
+Output files
+------------
+
+Output file is the function table that contains the KO term counts across samples, the KEGG metadata that describes the KO terms, and t4f specific metadata that has the FTU scores.
+
+The function table «fxn_table» : The function table (format txt) contains the KO term counts across samples.
+
+.. image:: ${static_path}/images/Tax4Fun/the_function_table_3.jpg
+
+The KEGG metadata « fxn_meta» : The KEGG metadata (format txt) describes the KO terms.
+
+.. image:: ${static_path}/images/Tax4Fun/the_kegg_metadata_4.jpg
+
+Tax4Fun specific metadata  «method_meta» : The Tax4Fun specific metadata (format txt) has the FTU quality control score for each sample. The FTU score is the fraction of OTUs that could not be mapped to KEGG organisms (KO terms).
+
+.. image:: ${static_path}/images/Tax4Fun/the_tax4fun_specific_metadata_5.jpg
+
+------------------------
+Galaxy wrapper's authors
+------------------------
+
+Helene Billard - UMR-1280 PhAN Inra-Universite de Nantes
+
+Sarah Maman - Sigenae GenPhySE - Inra Occitanie
+
+
+---------------------------
+Version Galaxy Tool : V1.0
+---------------------------
+
+--------
+Contacts 
+--------
+
+support.sigenae@inra.fr 
+
+-----------
+Please cite
+-----------
+
+Depending on the help provided you can cite us in acknowledgements, references or both.
+
+
+Examples
+
+
+Acknowledgements : We wish to thank SIGENAE group and UMR-1280 PhAN Inra-Universite de Nantes.
+
+References :
+
+    SIGENAE [http://www.sigenae.org/]
+    
+    Package R "themetagenomics" (authors : Stephen Woloszynek): https://cran.r-project.org/web/packages/themetagenomics/
+    
+    Manual ("t4f" : description, usage, arguments, sorties, references): https://cran.r-project.org/web/packages/themetagenomics/themetagenomics.pdf
+
+
+]]></help>
+</tool>
