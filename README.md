@@ -21,7 +21,7 @@ You can download this workflow from your Galaxy account, check tools parameters,
 
 Figure 1: Workflow "Function Table for Tax4Fun matrix".
 
-# Step 1: convert BIOM file in a tabular file.
+# Step 1: Convert BIOM file in a tabular file.
 
 ![alt text](https://github.com/Bios4Biol/GalaxyWrapperFunctionTableforTax4Funmatrix/blob/master/2-biom-to-tsv.png)
 
@@ -33,13 +33,13 @@ Figure 2: “FROGS BIOM to TSV (Galaxy Version 2.1.0)” tool.
 
 Figure 3: “Find and replace (Galaxy Version 1.0.0)” tool.
 
-# 3ème étape: convert tabular file in BIOM file.
+# 3ème étape: Convert tabular file in BIOM file.
 
 ![alt text](https://github.com/Bios4Biol/GalaxyWrapperFunctionTableforTax4Funmatrix/blob/master/4-tsv_biom.png)
 
 Figure 4: “FROGS TSV_to_BIOM (Galaxy Version 2.0.0)” tool.
 
-# 4ème étape: build phyloseq object with rdata format from BIOM file.
+# 4ème étape: Build phyloseq object with rdata format from BIOM file.
 
 ![alt text](https://github.com/Bios4Biol/GalaxyWrapperFunctionTableforTax4Funmatrix/blob/master/5-phyloseq.png)
 
