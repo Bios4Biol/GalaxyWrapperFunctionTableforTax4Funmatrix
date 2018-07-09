@@ -33,13 +33,13 @@ Figure 2: “FROGS BIOM to TSV (Galaxy Version 2.1.0)” tool.
 
 Figure 3: “Find and replace (Galaxy Version 1.0.0)” tool.
 
-# 3ème étape: Convert tabular file in BIOM file.
+# Step 3: Convert tabular file in BIOM file.
 
 ![alt text](https://github.com/Bios4Biol/GalaxyWrapperFunctionTableforTax4Funmatrix/blob/master/4-tsv_biom.png)
 
 Figure 4: “FROGS TSV_to_BIOM (Galaxy Version 2.0.0)” tool.
 
-# 4ème étape: Build phyloseq object with rdata format from BIOM file.
+# Step 4: Build phyloseq object with rdata format from BIOM file.
 
 ![alt text](https://github.com/Bios4Biol/GalaxyWrapperFunctionTableforTax4Funmatrix/blob/master/5-phyloseq.png)
 
